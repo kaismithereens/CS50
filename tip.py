@@ -6,10 +6,12 @@ def main():
 
 
 def dollars_to_float(d):
+    d = d.lstrip('$')
     d = float(d)
     return d
 
 def percent_to_float(p):
+    p = p.rstrip('%')
     p = float(p)/100
     return p
 
