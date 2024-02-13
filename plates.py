@@ -45,17 +45,16 @@ def numbers_at_the_end(s):
         return True
     else:
         return False
-"""
+
 def first_number_not_zero(s):
     for letter in s:
         if letter.isdigit() == False:
             continue
         else:
             if letter != "0":
-                break
-            return True
+                return True
     return False
-"""
+
 def no_special_chars(s):
     if s.isalnum():
         return True
