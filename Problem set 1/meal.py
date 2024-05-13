@@ -13,22 +13,33 @@ def main():
     my_input = input("What is the time? ")
     t = convert(my_input)
     if 7 <= t <= 8:
-        print("Breakfast time.")
+        print("breakfast time")
     elif 12 <= t <= 13:
-        print("Lunch time.")
+        print("lunch time")
     elif 18 <= t <= 19:
-        print("Dinner time.")
+        print("dinner time")
 
 
 def convert(time):
-    hours, minutes = time.split(":")
-    hours = float(hours)
-    minutes = float(minutes)
-    point = minutes/60
-    result = hours + point
-    return result
+    time = time.rstrip("a.m.")
+    if time.endswith("p.m."):
+        time = time.rstrip("p.m.")
+        hours, minutes = time.split(":")
+        hours = float(hours) + 12
+        minutes = float(minutes)
+        point = minutes/60
+        result = hours + point
+        return result
+    else:
+        hours, minutes = time.split(":")
+        hours = float(hours)
+        minutes = float(minutes)
+        point = minutes/60
+        result = hours + point
+        return result
 
 
 if __name__ == "__main__":
     main()
+
 

@@ -13,17 +13,20 @@ def is_allowed(money):
 
 total_amount = 0
 cost = 50
-print(f"Amount due: ${cost}")
+#print(f"Amount due: ${cost}")
 while total_amount < 50:
-    my_coin = int(input("Insert a coin: "))
+    my_coin = int(input("Insert Coin: "))
     if is_allowed(my_coin):
         total_amount = total_amount + my_coin
         still_need = cost - total_amount
         if total_amount >= 50:
             change = -1 * still_need
-            print(f"Change owed: ${change}")
+            print(f"Change Owed: {change}\n")
         else:
-            print(f"Amount due: ${still_need}")
+            print(f"Amount Due: {still_need}\n")
+    else:
+        print(f"Amount Due: {cost - total_amount}\n")
+        continue
 
 
 

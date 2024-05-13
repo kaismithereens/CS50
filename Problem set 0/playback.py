@@ -6,3 +6,4 @@ prompts the user for input and then outputs that same input, replacing each spac
 message = input("Type your message")
 message = message.replace(' ', '...')
 print(message)
+
