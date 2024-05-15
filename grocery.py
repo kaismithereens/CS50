@@ -1,46 +1,29 @@
 """
-In a file called fuel.py, implement a program that prompts the user for a fraction, formatted as X/Y,
-wherein each of X and Y is an integer, and then outputs, as a percentage rounded to the nearest integer,
-how much fuel is in the tank.
-If, though, 1% or less remains, output E instead to indicate that the tank is essentially empty.
-And if 99% or more remains, output F instead to indicate that the tank is essentially full.
-
-If, though, X or Y is not an integer, X is greater than Y, or Y is 0, instead prompt the user again.
-(It is not necessary for Y to be 4.)
-Be sure to catch any exceptions like ValueError or ZeroDivisionError.
+In a file called grocery.py, implement a program that prompts the user for items, one per line,
+until the user inputs control-d (which is a common way of ending one’s input to a program).
+Then output the user’s grocery list in all uppercase, sorted alphabetically by item,
+prefixing each line with the number of times the user inputted that item. No need to pluralize the items.
+Treat the user’s input case-insensitively.
 """
-
-def percentage(x, y):
+grocery_list = {}
+while True:
     try:
-        result = x/y
-    except ZeroDivisionError:
-        print("y is equal to Zero")
-    else:
-        return x/y
+        grocery = input()
+        if grocery not in grocery_list:
+            grocery_list[grocery]=1
+        else:
+            #find grocery value, increment value + 1
+            grocery_list[grocery] += 1
+    except EOFError:
+            break
+    except KeyError:
+        print("The key is not in grocery list. ")
 
-def separate_xy(f):
-    try:
-        x, y = 0, 0
-        result = f.split("/")
-        if len(result) == 2:
-            x, y = result
-        x = int(x)
-        y = int(y)
+my_list = list(grocery_list)
+my_list.sort()
+sorted_dict = {i: grocery_list[i] for i in my_list}
 
-    except ValueError:
-        print("Value error")
-    else:
-        return x, y
+for key,value in sorted_dict.items():
+     print(value, key.upper())
 
 
-def main():
-
-    fraction = input("What is the fraction X/Y? ")
-    a, b = separate_xy(fraction)
-    while a >= b or b == 0:
-        fraction = input("What is the fraction X/Y? ")
-        a, b = separate_xy(fraction)
-    print(percentage(a, b))
-
-
-main()
