@@ -19,38 +19,21 @@ menu = {
     "Tortilla Salad": 8.00
 }
 
-"""
-def ask_for_order():
-    try:
-        user_input = input("Order: ")
-    except EOFError:
-        print("\n")
-        break
-"""
+
 
 total = 0
 while True:
     try:
-        user_input = input("What is your order? ")
+        user_input = input("Order: ").title()
+
         if user_input not in menu:
-            new_user_input = input("Order: ")
+            continue
         else:
             total = total + menu[user_input]
-            print("Total: $", total)
-            new_user_input = input("Order: ")
-            total = total + menu[new_user_input]
-            print("Total: $", total)
+            print("Total: ${:.2f}".format(total), sep="")
+
     except EOFError:
-        print("\n")
+        print("Total: ${:.2f}".format(total), sep="")
         break
 
 
-"""
-user_input = input("What is your order? ")
-while True:
-    ask_for_order()
-    if user_input in menu:
-        print("Total: $", menu[user_input])
-    else:
-        ask_for_order()
-"""
